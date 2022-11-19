@@ -1,7 +1,7 @@
 package com.driver.Repository;
 
-import com.driver.Model.DeliveryPartner;
-import com.driver.Model.Order;
+import com.driver.DeliveryPartner;
+import com.driver.Order;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;

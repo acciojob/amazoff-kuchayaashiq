@@ -1,4 +1,4 @@
-package com.driver.Model;
+package com.driver;
 
 import lombok.Builder;
 import lombok.Data;

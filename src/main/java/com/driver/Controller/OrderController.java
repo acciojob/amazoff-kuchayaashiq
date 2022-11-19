@@ -3,8 +3,8 @@ package com.driver.Controller;
 import java.util.List;
 
 
-import com.driver.Model.DeliveryPartner;
-import com.driver.Model.Order;
+import com.driver.DeliveryPartner;
+import com.driver.Order;
 import com.driver.Service.DeliveryPartnerService;
 import com.driver.Service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;

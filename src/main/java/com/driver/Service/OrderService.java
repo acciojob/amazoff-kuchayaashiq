@@ -1,7 +1,7 @@
 package com.driver.Service;
 
 
-import com.driver.Model.Order;
+import com.driver.Order;
 
 import com.driver.Repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;

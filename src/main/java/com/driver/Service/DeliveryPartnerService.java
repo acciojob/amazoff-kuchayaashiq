@@ -1,7 +1,7 @@
 package com.driver.Service;
 
 
-import com.driver.Model.DeliveryPartner;
+import com.driver.DeliveryPartner;
 import com.driver.Repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

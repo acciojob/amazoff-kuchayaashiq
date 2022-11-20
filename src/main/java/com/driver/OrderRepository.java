@@ -28,10 +28,9 @@ public class OrderRepository {
     }
 
     public Order getOrderById(String id) {
-        if(orders.containsKey(id)){
-            return orders.get(id);
-        }
-        return null;
+
+        return orders.get(id);
+
     }
 
     public void addPartner(String id) {
@@ -40,10 +39,8 @@ public class OrderRepository {
     }
 
     public DeliveryPartner getPartnerById(String id) {
-        if(deliveryPartners.containsKey(id)){
+
             return deliveryPartners.get(id);
-        }
-        return  null;
 
     }
 
@@ -106,14 +103,19 @@ public class OrderRepository {
     }
 
     public String getLastDeliveryTimeByPartnerId(String partnerId) {
-        String LastDeliveryTime ="";
+        int maxtime = 0;
         for(Map.Entry<String,String> e:orderDeliveryPartnerPair.entrySet()){
             if(partnerId.equals(e.getValue())){
                 Order order = getOrderById(e.getKey());
-                LastDeliveryTime = String.valueOf(order.getDeliveryTime());
+                maxtime = Math.max(maxtime,order.getDeliveryTime());
             }
         }
-        return LastDeliveryTime;
+        String hh = String.valueOf(maxtime/60);
+        String mm = String.valueOf(maxtime%60);
+        if(mm.length() < 2){
+            mm+="0";
+        }
+        return hh+":"+mm;
     }
 
     public void deletePartnerById(String partnerId) {
@@ -135,7 +137,10 @@ public class OrderRepository {
                 orders.remove(orderId);
             }
         }
-
+        String pId = orderDeliveryPartnerPair.get(orderId);
+        DeliveryPartner deliveryPartner = deliveryPartners.get(pId);
+        int totalOrders = deliveryPartners.get(pId).getNumberOfOrders() -1;
+        deliveryPartner.setNumberOfOrders(totalOrders);
         for(Map.Entry<String,String> e:orderDeliveryPartnerPair.entrySet()){
             if(orderId.equals(e.getKey())){
                 orderDeliveryPartnerPair.remove(e.getKey());

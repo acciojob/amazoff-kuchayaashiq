@@ -122,6 +122,11 @@ public class OrderRepository {
                 deliveryPartners.remove(partnerId);
             }
         }
+        for(Map.Entry<String,String> e:orderDeliveryPartnerPair.entrySet()){
+            if(partnerId.equals(e.getValue())){
+                orderDeliveryPartnerPair.remove(e.getKey());
+            }
+        }
     }
 
     public void deleteOrderById(String orderId) {
@@ -131,9 +136,9 @@ public class OrderRepository {
             }
         }
 
-        for(String id: orderDeliveryPartnerPair.keySet()){
-            if(id==orderId){
-                orderDeliveryPartnerPair.remove(orderId);
+        for(Map.Entry<String,String> e:orderDeliveryPartnerPair.entrySet()){
+            if(orderId.equals(e.getKey())){
+                orderDeliveryPartnerPair.remove(e.getKey());
             }
         }
     }
